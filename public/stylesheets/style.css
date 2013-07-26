@@ -1,0 +1,20 @@
+      body {
+      }
+
+      #logo-text-container {
+        position: fixed;
+        top:40%;
+        left: 45%;
+      }
+      #version-text-container{
+        display: none;
+        position: fixed;
+        bottom:5%;
+        margin-left: 46%;        
+      }
+
+      #welcome-link{
+        position: fixed;
+        top:40%;
+        left: 49%;        
+      }
