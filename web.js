@@ -6,6 +6,8 @@
 var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
+  , login = require('./routes/login')
+  , goal = require('./routes/goal')
   , http = require('http')
   , path = require('path');
 
@@ -17,6 +19,8 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(express.favicon());
 app.use(express.logger('dev'));
+app.use(express.cookieParser());
+app.use(express.session({ secret: 'Mobile App Secret'}));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
@@ -29,7 +33,10 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
+app.get('/login', login.index);
 app.get('/users', user.list);
+app.get('/goals', goal.list);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
